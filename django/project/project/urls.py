@@ -22,4 +22,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.fun1),
     path('wta/<a>/<b>',views.fun2),
+    path('bonus/<int:s>/<int:y>',views.bonus),
+    path('digits/<int:a>',views.digits),
+    path('bills/<int:u>',views.bills),
+    path('city/<c>',views.city),
+    path('days/<int:d>',views.days),
+    path('tax/<int:pb>',views.tax),
 ]
