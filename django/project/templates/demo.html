@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML</title>
+</head>
+<body style="background-color: cornsilk;">
+    <h1 style="color: cadetblue;">Welcome To All</h1>
+    <!-- <h2>{{data}}</h2>
+    <h2>{{b}}</h2>
+    <h2>{{c}}</h2>
+    {% for i in c %}
+    <h2>{{i}}</h2>
+    {% endfor %}
+    <h2>{{d}}</h2> -->
+    <table style="border: 1px solid black;">
+        <tr>
+            <th>Name</th>
+            <th>Place</th>
+            <th>Age</th>
+        </tr>
+            {% for i in d%}
+        <tr>
+                <td>{{i.name}}</td>
+                <td>{{i.place}}</td>
+                <td>{{i.age}}</td>
+        </tr>
+            {% endfor %}
+
+        
+    </table>
+    
+</body>
+</html>

@@ -1,0 +1,15 @@
+body{
+    background-color: cornflowerblue;
+}
+
+table th{
+    color: #eeeeee;
+}
+
+table td{
+    color: #f3f3f3;
+}
+
+table{
+    border: 1px solid rgb(211, 211, 211);
+}

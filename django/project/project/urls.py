@@ -28,4 +28,6 @@ urlpatterns = [
     path('city/<c>',views.city),
     path('days/<int:d>',views.days),
     path('tax/<int:pb>',views.tax),
+    path('fun3',views.fun3),
+    path('fun4',views.fun4),
 ]
