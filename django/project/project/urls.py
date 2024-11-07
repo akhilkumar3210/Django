@@ -30,4 +30,7 @@ urlpatterns = [
     path('tax/<int:pb>',views.tax),
     path('fun3',views.fun3),
     path('fun4',views.fun4),
+    path('addstd',views.addstd),
+    path('edit/<id>',views.editstd),
+    path('delete/<id>',views.delstd),
 ]

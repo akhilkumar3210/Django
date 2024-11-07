@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 
 # Create your views here.
@@ -82,3 +82,39 @@ def fun4(req):
         else:
             l2.append(i)
     return render(req,'table.html',{'a':a,'l1':l1,'l2':l2})
+
+std=[]
+
+def addstd(req):
+    if req.method=='POST':
+        r=req.POST['roll_no']
+        n=req.POST['name']
+        a=req.POST['age']
+        std.append({'roll_no':r,'name':n,'age':a})
+        print(std)
+        return redirect(addstd)
+    else:
+        return render(req,'adstd.html',{'std':std})
+    
+def editstd(req,id):
+    student=''
+    for i in std:
+        if i['roll_no']==id:
+            student=i
+            print(student)
+    if req.method=='POST':
+        r=req.POST['roll_no']
+        n=req.POST['name']
+        a=req.POST['age']
+        student['roll_no']=r
+        student['name']=n
+        student['age']=a
+        return redirect(addstd)
+    else:
+        return render(req,'edit.html',{'data':student})
+    
+def delstd(req,id):
+    for i in std:
+        if i['roll_no']==id:
+            std.remove(i)
+    return redirect(addstd)
