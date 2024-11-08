@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
+from .models import *
 
 # Create your views here.
 def fun1(request):
@@ -90,31 +91,38 @@ def addstd(req):
         r=req.POST['roll_no']
         n=req.POST['name']
         a=req.POST['age']
-        std.append({'roll_no':r,'name':n,'age':a})
-        print(std)
+        data=Student.objects.create(roll_no=r,name=n,age=a)
+        data.save()
+        # std.append({'roll_no':r,'name':n,'age':a})
+        # print(std)
         return redirect(addstd)
     else:
-        return render(req,'adstd.html',{'std':std})
+        data=Student.objects.all()
+        return render(req,'adstd.html',{'std':data})
     
 def editstd(req,id):
-    student=''
-    for i in std:
-        if i['roll_no']==id:
-            student=i
-            print(student)
+    # student=''
+    # for i in std:
+    #     if i['roll_no']==id:
+    #         student=i
+            # print(student)
+    data=Student.objects.get(pk=id)
     if req.method=='POST':
         r=req.POST['roll_no']
         n=req.POST['name']
         a=req.POST['age']
-        student['roll_no']=r
-        student['name']=n
-        student['age']=a
+        # student['roll_no']=r
+        # student['name']=n
+        # student['age']=a
+        data=Student.objects.filter(pk=id).update(roll_no=r,name=n,age=a)
         return redirect(addstd)
     else:
-        return render(req,'edit.html',{'data':student})
+        return render(req,'edit.html',{'data':data})
     
 def delstd(req,id):
-    for i in std:
-        if i['roll_no']==id:
-            std.remove(i)
+    # for i in std:
+    #     if i['roll_no']==id:
+    #         std.remove(i)
+    data=Student.objects.get(pk=id)
+    data.delete()
     return redirect(addstd)
